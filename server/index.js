@@ -37,5 +37,5 @@ server.listen(3001, () => {
 });
 
 app.use("/", (req, res) => {
-  res.send("server on");
+  res.send(origin);
 });
