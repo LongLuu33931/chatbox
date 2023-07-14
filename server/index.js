@@ -10,7 +10,7 @@ const server = https.createServer(app);
 const origin = process.env.ORIGIN || "https://localhost:3000";
 const io = new Server(server, {
   cors: {
-    origin: origin,
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
