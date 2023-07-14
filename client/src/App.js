@@ -5,7 +5,7 @@ import Chat from "./Chat";
 const connect = process.env.REACT_APP_CONNECT || "http://localhost:3001";
 console.log(connect);
 const socket = io.connect(connect);
-
+console.log(socket);
 function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");

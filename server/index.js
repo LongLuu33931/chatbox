@@ -15,6 +15,8 @@ const io = new Server(server, {
   },
 });
 
+console.log(io._opts.cors);
+
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
