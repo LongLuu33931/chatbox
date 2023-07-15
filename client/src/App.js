@@ -2,10 +2,8 @@ import "./App.css";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
-const connect = process.env.REACT_APP_CONNECT;
-console.log(connect);
+const connect = process.env.REACT_APP_CONNECT || "https://localhost:3001";
 const socket = io.connect(connect);
-console.log(socket);
 function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");

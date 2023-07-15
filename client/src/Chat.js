@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 
 function Chat({ socket, username, room }) {
@@ -23,12 +23,11 @@ function Chat({ socket, username, room }) {
     }
   };
 
-  useEffect(() => {
+  useMemo(() => {
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
-
   return (
     <div className="chat-window">
       <div className="chat-header">
@@ -40,7 +39,7 @@ function Chat({ socket, username, room }) {
             return (
               <div
                 className="message"
-                id={username === messageContent.author ? "you" : "other"}
+                id={username !== messageContent.author ? "you" : "other"}
               >
                 <div>
                   <div className="message-content">
