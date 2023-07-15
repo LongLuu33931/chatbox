@@ -1,20 +1,16 @@
 const express = require("express");
 const app = express();
-const https = require("https");
+const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
-const { readFileSync } = require("fs");
 require("dotenv").config();
 app.use(cors());
 
-const server = https.createServer({
-  key: readFileSync("server.key"),
-  cert: readFileSync("server.cert"),
-});
-const origin = process.env.ORIGIN || "https://localhost:3000";
+const server = http.createServer(app);
+const origin = process.env.ORIGIN || "http://localhost:3000";
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: origin,
     methods: ["GET", "POST"],
   },
 });
